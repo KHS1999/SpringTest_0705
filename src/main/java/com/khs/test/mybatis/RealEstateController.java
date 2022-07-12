@@ -66,4 +66,21 @@ public class RealEstateController {
 		int count = realEstateBO.addRealEstate(realtorId,"썅떼빌리버 오피스텔 814호", 45, "월세", 100000, 120);
 		return "입력성공 : " + count ;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/6")
+	public String updateRealEstate() {
+		// id가 20인 행의 type 전세, price 70000
+		int count = realEstateBO.updateRealEstate(20, "전세", 70000);
+		return "수정결과 : " + count;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/7")
+	public String deleteRealEstate(@RequestParam("id") int id) {
+		// parameter로 전달 받은 id 행 삭제
+		
+		int count = realEstateBO.deleteRealEstate(id);
+		return "삭제 결과 : " + count;
+	}
 }
