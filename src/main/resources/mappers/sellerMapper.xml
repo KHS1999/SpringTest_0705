@@ -2,7 +2,7 @@
   <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.khs.test.jsp.dao.sellerDAO">
+  <mapper namespace="com.khs.test.jsp.dao.SellerDAO">
   	<insert id="insertSeller" parameterType="map">
   		INSERT INTO
   			`seller`
@@ -13,7 +13,7 @@
   			,`createdAt`
   			,`updatedAt`
   		)	
-  		VALUSE
+  		VALUES
   		(
 			#{nickname}
 			,#{profileImage}
@@ -24,5 +24,37 @@
   		
   		
   	</insert>
+  	
+  	<select id="selectLastSeller" resultType="com.khs.test.jsp.model.Seller">
+  		Select
+  			`id`
+  			,`nickname`
+  			,`profileImage`
+  			,`temperature`
+  			,`createdAt`
+  			,`updatedAt`
+  		FROM
+  			`seller`
+  		ORDER BY `id` DESC
+  		LIMIT 1;
+  			
+  	
+  	</select>
+  	  	
+  	<select id="selectSeller" parameterType="int"
+  	resultType="com.khs.test.jsp.model.Seller">
+  		Select
+  			`id`
+  			,`nickname`
+  			,`profileImage`
+  			,`temperature`
+  			,`createdAt`
+  			,`updatedAt`
+  		FROM
+  			`seller`
+  		WHERE
+  			`id` = #{id}
+  		
+  	</select>
   
   </mapper>

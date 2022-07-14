@@ -13,10 +13,12 @@
 <body>
 	<div class="container">
 		<h1>판매자 추가</h1>
-		닉네임 <br> <input type="text" name="nickname"><br>
-		프로필 사진 url <br> <input type="text" name="profileimage"><br>
-		온도 <br> <input type="text" name="temperature"> <br>
-		<button class="btn text-white">추가</button>
+		<form method="post" action="/jsp/test/1">
+			닉네임 <br> <input type="text" class="form-control" name="nickname"><br>
+			프로필 사진 url <br> <input type="text" class="form-control" name="profileImage"><br>
+			온도 <br> <input type="text" name="temperature" class="form-control"> <br>
+			<button class="btn bg-primary text-white">추가</button>
+		</form>
 		
 	</div>
 
