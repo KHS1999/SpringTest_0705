@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.khs.test.database.model.store;
-import com.khs.test.mybatis.model.RealEstate;
 
 @Repository
 public interface storeDAO {
