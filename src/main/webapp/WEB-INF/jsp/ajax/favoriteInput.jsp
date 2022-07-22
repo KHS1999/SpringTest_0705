@@ -14,13 +14,13 @@
 
 </head>
 <body>
-	<div>
+	<div class="container">
 		<h1>즐겨찾기 추가하기</h1>
 		제목<br>
-		<input type="text" id="nameInput"><br>
+		<input type="text" id="nameInput" class="form-control"><br>
 		주소<br>
-		<input type="text" id="addressInput"><br>
-		<button id="addBtn">추가</button>
+		<input type="text" id="addressInput" class="form-control"><br>
+		<button id="addBtn" class="btn bg-success text-white form-control">추가</button>
 		
 	</div>
 	<script>
