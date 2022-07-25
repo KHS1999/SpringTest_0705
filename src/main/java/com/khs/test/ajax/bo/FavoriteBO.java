@@ -20,4 +20,16 @@ public class FavoriteBO {
 		
 		return favoritedao.insertfavorite(name, address);
 	}
+	
+	public boolean isDuplicateAddress(String address) {
+		
+		int count = favoritedao.selectCountByAddress(address);
+		
+		if(count == 0) {
+			
+			return false;
+		}else {
+			return true;
+		}
+	}
 }

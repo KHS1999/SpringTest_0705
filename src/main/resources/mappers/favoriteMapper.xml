@@ -35,6 +35,16 @@
   				)
   		
   		</insert>
+  		
+  		<select id="selectCountByAddress" parameterType="string" resultType="int">
+  			
+  			SELECT
+  				count(1)
+  			FROM
+  				`favorite`
+  			WHERE		
+  				`address` = #{address}
+  		</select>
   
   
   </mapper>

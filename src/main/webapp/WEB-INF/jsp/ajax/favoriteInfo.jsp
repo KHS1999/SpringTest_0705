@@ -31,6 +31,7 @@
 					<td>${status.count }</td>
 					<td>${favoriteList.name }</td>
 					<td>${favoriteList.address }</td>
+					<td><button type="button" id="deleteBtn" class=" btn bg-danger text-white"> 삭제</button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
