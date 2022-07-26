@@ -57,19 +57,39 @@ public class favoriteController {
 		
 		return "ajax/favoriteInput";
 	}
-	
+	// url을 전달 받고, 해당url 이 이미 테이블에 저장되어 있는지 확인하고
+	// 그 결과를 json 형태로 response에 담아 전달하는 API를 생성
+	// {"is_duplicate":true} , {"is_duplicate" : false}
 	@GetMapping("/is_duplicate")
 	@ResponseBody
-	public Map<String, Boolean>isDuplicate(@RequestParam("address") String address) {
+	public Map<String, Boolean> isDuplicate(@RequestParam("address") String address) {
 		
 		Map<String, Boolean> result = new HashMap<>();
 		
-		if(favoriteBO.isDuplicateAddress(address)) {
-			
+		if(favoriteBO.isDuplicateAddress(address)) { // url 이 중복된 상태
+			// {"is_duplicate":true}
 			result.put("is_duplicate", true);
-		}else {
+		}else { // 중복되지 않은 상태
+			// {"is_duplicate" : false}
 			result.put("is_duplicate", false);
 		}
 		return result;
+	}
+	
+	// id를 전달 받고 해당 행을 삭제하는 api
+	@GetMapping("/delete")
+	@ResponseBody
+	public Map<String,String> deleteFavorite(@RequestParam("id") int id) {
+		
+		int count = favoriteBO.deleteFavorite(id);
+		
+		Map<String, String> map = new HashMap<>();
+		// {"result" : "success"}
+		if(count == 1) { // 성공
+			map.put("result", "success");
+		}else { // 실패  {"result" : "fail"}
+			map.put("result", "fail");
+		}
+			return map;
 	}
 }

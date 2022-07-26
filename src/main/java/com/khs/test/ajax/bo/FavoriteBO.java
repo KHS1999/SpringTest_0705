@@ -25,11 +25,16 @@ public class FavoriteBO {
 		
 		int count = favoritedao.selectCountByAddress(address);
 		
+		// count 0 이면 중복되지 않음	
 		if(count == 0) {
 			
 			return false;
 		}else {
 			return true;
 		}
+	}
+	
+	public int deleteFavorite(int id) {
+		return favoritedao.deletefavoriteById(id);
 	}
 }

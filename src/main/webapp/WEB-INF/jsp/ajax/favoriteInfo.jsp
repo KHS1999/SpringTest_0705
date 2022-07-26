@@ -31,11 +31,43 @@
 					<td>${status.count }</td>
 					<td>${favoriteList.name }</td>
 					<td>${favoriteList.address }</td>
-					<td><button type="button" id="deleteBtn" class=" btn bg-danger text-white"> 삭제</button></td>
+					<td><button type="button"  class=" delete-btn btn btn-sm bg-danger text-white" data-favorite-id="${favoriteList.id }"> 삭제</button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	
+	<script>
+		$(document).ready(function () {
+			$(".delete-btn").on("click", function(){
+				
+				// 지금 클릭된 버튼이 포함된 행의 id 얻어 오기 $(this) 이벤트가 발생한 그 객체를 말함
+				let favoriteId = $(this).data("favorite-id");
+				
+				
+				// id를 전달해서 해당 즐겨찾기를 삭제해주는 api 활용
+				
+				$.ajax({
+					type:"get",
+					url:"/ajax/favorite/delete",
+					data:{"id":favoriteId},
+					success:function(data){
+						
+						if(data.result == "success"){
+							location.reload();
+						}else{
+							alert("삭제 실패!!");
+						}
+						
+					},
+					error:function(){
+						alert("에러발생!!");
+					}
+				});
+				
+			});			
+		});
+	</script>
 </body>
 </html>
