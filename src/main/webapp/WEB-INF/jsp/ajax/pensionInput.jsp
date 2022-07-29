@@ -22,13 +22,13 @@
             <nav style="background-color:chocolate ;">
                 <ul class="nav nav-fill">
                     <li class="nav-item"><a href="#" class="nav-link text-white" >팬션소개</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white" >객실보기</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white" >예약안내</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white">커뮤니티</a></li>               
+                    <li class="nav-item"><a href="/ajax/pension/LookUp" class="nav-link text-white" >객실보기</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-white" >예약하기</a></li>
+                    <li class="nav-item"><a href="/ajax/pension/list" class="nav-link text-white">예약목록</a></li>               
                 </ul>
             </nav>
             <section>
-            	<form method="get" action="/ajax/pension/insert">
+            	
 	            	<h1 class="text-center">예약하기</h1>
 	            	이름<input type="text" class="form-control" name="name" id="nameInput">
 	            	예약날짜<input type="text" class="form-control" name="date" id="datepicker">
@@ -36,7 +36,7 @@
 	            	숙박인원<input type="text" class="form-control" name="headcount" id="headcountInput">
 	            	전화번호<input type="text" class="form-control" name="phoneNumber" id="phoneNumberInput">
 	            	<button type="submit" class="btn bg-warning form-control" id="addBtn">예약하기</button>
-            	</form>
+            	
             </section>
             <footer>
                 <small class="text-secondary">
@@ -50,7 +50,10 @@
 		  $(document).ready(function(){
 			 
 			  
-				$("#datepicker").datepicker();
+				$("#datepicker").datepicker({
+					
+					dateFormat: "yy년-mm월-dd일"
+				});
 				
 				$("#addBtn").on("click",function(){
 					
@@ -80,9 +83,29 @@
 						alert("전화번호를 입력해주세요");
 						return false;
 					}					
+				
+				
+				$.ajax({
+					type:"get",
+					url:"/ajax/pension/insert",
+					data:{"name":name, "date" : date, "day" : day, "headcount" : headcount , "phoneNumber" : phoneNumber},
+					success:function(data){
+						
+						if(data.result == "success"){
+							location.href = "/ajax/pension/list";
+						}else{
+							alert(data.result);
+							
+							alert("삽입실패!");							
+						}
+					},
+					error:function(){
+						
+						alert("에러발생!");
+					}
 				});
-				  
-		  });
+			});	  
+		  });	
 
   </script>
 </body>

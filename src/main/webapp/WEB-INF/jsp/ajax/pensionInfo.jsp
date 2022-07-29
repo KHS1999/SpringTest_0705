@@ -19,9 +19,9 @@
             <nav style="background-color:chocolate ;">
                 <ul class="nav nav-fill">
                     <li class="nav-item"><a href="#" class="nav-link text-white" >팬션소개</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white" >객실보기</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white" >예약안내</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white">커뮤니티</a></li>               
+                    <li class="nav-item"><a href="/ajax/pension/LookUp" class="nav-link text-white" >객실보기</a></li>
+                    <li class="nav-item"><a href="/ajax/pension/input" class="nav-link text-white" >예약하기</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-white">예약목록</a></li>               
                 </ul>
             </nav>
             <section>
@@ -75,7 +75,11 @@
 	  		
 	  		$(".delete-btn").on("click",function(){
 	  			
+	  			// 해당 행을 삭제한다.
+	  			// 삭제할 대상의 id를 얻어낸다.
 	  			let pensionId = $(this).data("pension-id");
+	  			
+	  			// 삭제 api를 호출한다.
 	  			
 	  			$.ajax({
 	  				
@@ -83,7 +87,7 @@
 	  				url:"/ajax/pension/delete",
 	  				data:{"id":pensionId},
 	  				success:function(data){
-	  					
+	  					// {"result" : "success"} , {"result":"fail"}
 	  					if(data.result == "success"){
 	  						location.reload();
 	  					}else{

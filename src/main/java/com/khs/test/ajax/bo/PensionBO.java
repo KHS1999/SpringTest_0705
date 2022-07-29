@@ -1,5 +1,6 @@
 package com.khs.test.ajax.bo;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,11 @@ public class PensionBO {
 		return pensionDAO.deletePension(id);
 	}
 	
-	public int getinsertPension(String name, String date, int day, int headcount, String phoneNumber) {
-		return pensionDAO.insertPension(name, date, day, headcount, phoneNumber);
+	public int getinsertPension(String name, Date date, int day, int headcount, String phoneNumber) {
+		return pensionDAO.insertPension(name, date, day, headcount, phoneNumber,"대기중");
+	}
+	
+	public pension getBooking(String name, String phoneNumber) {
+		return pensionDAO.selectBooking(name, phoneNumber);
 	}
 }

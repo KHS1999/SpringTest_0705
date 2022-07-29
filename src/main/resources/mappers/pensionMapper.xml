@@ -47,11 +47,29 @@
   					,#{day}
   					,#{date}
   					,#{phoneNumber}
-  					,'대기중'
+  					,#{state}
   					,now()
   					,now()
   				)
   		
   		</insert>
+  		<select id="selectBooking" parameterType="map" resultType="com.khs.test.ajax.model.pension">
+  			SELECT
+  				'id'
+  				,`name`
+  				,`headcount`
+  				,`day`
+  				,`date`
+  				,`phoneNumber`
+  				,`state`
+  				,`createdAt`
+  				,`updatedAt`
+  			FROM
+  				`booking`
+  			WHERE	
+  				`name` = #{name}
+  				AND	`phoneNumber` = #{phoneNumber}	  				
+  		
+  		</select>
   
   </mapper>
