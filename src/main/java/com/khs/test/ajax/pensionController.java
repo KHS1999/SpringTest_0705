@@ -51,7 +51,7 @@ public class pensionController {
 	@GetMapping("/insert")
 	@ResponseBody
 	public Map<String,String> addPension(@RequestParam("name") String name
-			,@DateTimeFormat(pattern="yyyy년 MM월 dd일")
+			,@DateTimeFormat(pattern="yyyy년-MM월-dd일")
 			@RequestParam("date") Date date
 			,@RequestParam("day") int day
 			,@RequestParam("headcount") int headcount

@@ -55,7 +55,7 @@
   		</insert>
   		<select id="selectBooking" parameterType="map" resultType="com.khs.test.ajax.model.pension">
   			SELECT
-  				'id'
+  				`id`
   				,`name`
   				,`headcount`
   				,`day`

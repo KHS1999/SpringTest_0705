@@ -22,7 +22,7 @@
             <nav style="background-color:chocolate ;">
                 <ul class="nav nav-fill">
                     <li class="nav-item"><a href="#" class="nav-link text-white" >팬션소개</a></li>
-                    <li class="nav-item"><a href="/ajax/pension/LookUp" class="nav-link text-white" >객실보기</a></li>
+                    <li class="nav-item"><a href="/ajax/pension/lookUp" class="nav-link text-white" >객실보기</a></li>
                     <li class="nav-item"><a href="#" class="nav-link text-white" >예약하기</a></li>
                     <li class="nav-item"><a href="/ajax/pension/list" class="nav-link text-white">예약목록</a></li>               
                 </ul>
@@ -49,6 +49,7 @@
 	  <script>
 		  $(document).ready(function(){
 			 
+			  
 			  
 				$("#datepicker").datepicker({
 					
@@ -83,7 +84,7 @@
 						alert("전화번호를 입력해주세요");
 						return false;
 					}					
-				
+					alert(name+ " "+date+ " "+day+ " "+headcount+ " "+phoneNumber);
 				
 				$.ajax({
 					type:"get",
